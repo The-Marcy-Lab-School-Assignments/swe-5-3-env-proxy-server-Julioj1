@@ -1,12 +1,13 @@
 # Securing API Keys
 
-Deployment Link: <<<<<< PUT YOUR DEPLOYMENT LINK HERE >>>>>>
+Deployment Link: <<<<<< [PUT YOUR DEPLOYMENT LINK HERE](https://swe-5-3-env-proxy-server-julioj1.onrender.com) >>>>>>
 
 In this assignment, you will be given a working frontend application that attempts to fetch gifs. You'll use Express as a middleman for API requests, allowing us to deploy the project while keeping the API key secure.
 
 Refer to the associated [GitBook Chapter (Environment Variables and Deployment)](https://marcylabschool.gitbook.io/marcy-lab-school-docs/mod-5-servers/6-environment-variables-deployment) for support.
 
 **Table of Contents**
+
 - [Setup](#setup)
 - [Short Response Questions](#short-response-questions)
 - [Code](#code)
@@ -31,13 +32,14 @@ git checkout -b draft
 
 ## Short Response Questions
 
-Short response questions can be found in the `short-response.md` file. Write your responses directly in that file. Do not forget to complete this part of the assignment. 
+Short response questions can be found in the `short-response.md` file. Write your responses directly in that file. Do not forget to complete this part of the assignment.
 
 ## Code
 
 ### Grading
 
 Your grade on this assignment will be determined by the number of tasks you are able to complete. This assignment has 10 requirements:
+
 - 3 environment variable requirements
 - 5 server-side requirements
 - 1 client-side requirement
@@ -60,6 +62,7 @@ Before submitting, make sure that these tasks are completed!
 - [ ] The `/api/gifs` endpoint can parse the `req.query` parameters to get the search term and make a request to the Giphy API's search endpoint.
 
 **Client-Side Technical Requirements**
+
 - [ ] The frontend sends a request to `/api/gifs` instead of directly to the Giphy API
 
 **Deployment Technical Requirements**
@@ -69,6 +72,7 @@ Before submitting, make sure that these tasks are completed!
 You got this!
 
 ### Server Side Code
+
 #### Step 1 — Create an Endpoint and Controller
 
 > ✅ You will know that you've completed this step once you can send a request to [http://localhost:8080/api/gifs](http://localhost:8080/api/gifs) and get back the top trending gifs from the Giphy API. This can be done with, or without storing the API key in an environment variable (that is the next step).
@@ -84,10 +88,11 @@ https://api.giphy.com/v1/gifs/trending?limit=3&rating=g&api_key=API_KEY
 ```
 
 When the server receives a `GET /api/gifs` request, it should:
+
 - Send the fetched data OR
 - Send an `error` object and a 503 status code if an error occurred
 
-Test this out by sending a GET request to `http://localhost:8080/api/gifs` using `curl` or your browser. 
+Test this out by sending a GET request to `http://localhost:8080/api/gifs` using `curl` or your browser.
 
 You should see the fetched gifs with no authorization errors!
 
@@ -107,6 +112,7 @@ Once you've completed these steps, go ahead and add, commit, and push your code.
 > When it comes time to deploy this project, you will be able to provide the server hosting service with environment variables that will be securely stored and hidden from the public but that your server will have access to.
 
 ### Client Side Code
+
 #### Step 3 — Update the Frontend Application
 
 > ✅ You will know that you've completed this step once you refresh the page at [http://localhost:8080](http://localhost:8080) and see trending gifs loading successfully.
@@ -118,10 +124,11 @@ Remember, this is what we're looking for:
 ![](img/express-api-middleman.svg)
 
 Do the following:
-* Rewrite the `getTrendingGifs` function in `frontend/src/fetch-helpers.js` so that it sends a request to `/api/gifs` instead of directly to the Giphy API.
-* Refresh the page at [http://localhost:8080](http://localhost:8080) — no rebuild needed!
-* Open the Developer Tools Network Tab and refresh the page
-* You should see a request sent to `gifs` and there should NOT be a request sent to the Giphy API (see below)
+
+- Rewrite the `getTrendingGifs` function in `frontend/src/fetch-helpers.js` so that it sends a request to `/api/gifs` instead of directly to the Giphy API.
+- Refresh the page at [http://localhost:8080](http://localhost:8080) — no rebuild needed!
+- Open the Developer Tools Network Tab and refresh the page
+- You should see a request sent to `gifs` and there should NOT be a request sent to the Giphy API (see below)
 
 ![](./img/localhost-fetch.png)
 
